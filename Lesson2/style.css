@@ -1,0 +1,16 @@
+h1 {
+	color: aqua;
+	font-family: Impact;
+}
+
+canvas {
+	border: 2px solid black;
+}
+
+#canvasTwo {
+	border: 2px solid black;
+}
+
+#canvasThree {
+	border: 2px solid black;
+}
