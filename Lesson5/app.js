@@ -30,6 +30,15 @@ function create() {
 	var ledge =  platforms.create(-150, 250, 'ground');
 	ledge.body.immovable = true;
 
+	stars = game.add.group();
+	stars.enableBody = true;
+
+	for (var i=0, i<12; i++){
+		var star = stars.create(i*70, 0,'star');
+		star.body.gravity.y = 500;
+		star.body.bounce.y = 0.7+Math.random()*0.3;
+	}
+
 	//Player
 	player = game.add.sprite(32, game.world.height - 150, 'dude');
 		//animate
@@ -58,6 +67,7 @@ function create() {
 function update() {
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(enemy, platforms);
+	game.physics.arcade.collide(star, platforms);
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown) {
 		player.body.velocity.x= -150;
@@ -73,8 +83,8 @@ function update() {
 	player.body.velocity.y = -350;
 	}
 	if (enemy.x > 759) {
-		enemy.body.velocity.x = -120
+		enemy.body.velocity.x = -120;
 	} else if (enemy.x <405) {
-		enemy.body.velocity.x = 120
+		enemy.body.velocity.x = 120;
 	}
 }
