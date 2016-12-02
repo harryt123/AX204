@@ -46,7 +46,7 @@ function create() {
 		player.animations.add('right', [6, 7, 8, 9], 10, true);
 		//physics
 		game.physics.arcade.enable(player);
-		player.body.bounce.y = 0.2;
+		player.body.bounce.y = 0.21;
 		player.body.gravity.y = 300;
 		player.body.collideWorldBounds = true;
 
