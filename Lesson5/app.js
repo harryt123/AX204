@@ -101,7 +101,7 @@ function update() {
 		star = stars.create(Math.floor(Math.random()*750),0,'star');
 		star.body.gravity.y=200;
 		star.body.bounce.y = 0.7 + Math.random() *0.3;
-		score+=1000000000000000000000;
+		score+=1;
 		scoreText.text="ur socr: "+score;
 	}
 }
