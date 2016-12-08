@@ -37,6 +37,7 @@ function create() {
 		var star = stars.create(i*70, 0,'star');
 		star.body.gravity.y = 500;
 		star.body.bounce.y = 0.7+Math.random()*0.3;
+		star.body.collideWorldBounds = true;
 	}
 
 	//Player
@@ -71,6 +72,8 @@ function update() {
 	game.physics.arcade.collide(stars, player);
 	game.physics.arcade.collide(stars, stars);
 	game.physics.arcade.collide(enemy, player);
+
+	game.physics.arcade.overlap(player, stars, collectStar, null, this);
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown) {
 		player.body.velocity.x= -150;
@@ -91,5 +94,8 @@ function update() {
 	} else if (enemy.x <405) {
 		enemy.body.velocity.x = 120;
 		enemy.animations.play('right');
+	}
+	function collectStar(player,star){
+
 	}
 }
