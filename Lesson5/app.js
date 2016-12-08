@@ -70,6 +70,7 @@ function update() {
 	game.physics.arcade.collide(stars, platforms);
 	game.physics.arcade.collide(stars, player);
 	game.physics.arcade.collide(stars, stars);
+	game.physics.arcade.collide(enemy, player);
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown) {
 		player.body.velocity.x= -150;
