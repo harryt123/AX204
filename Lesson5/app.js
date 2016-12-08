@@ -33,7 +33,7 @@ function create() {
 	stars = game.add.group();
 	stars.enableBody = true;
 
-	for (var i=0, i<12; i++){
+	for (var i=0; i<12; i++){
 		var star = stars.create(i*70, 0,'star');
 		star.body.gravity.y = 500;
 		star.body.bounce.y = 0.7+Math.random()*0.3;
