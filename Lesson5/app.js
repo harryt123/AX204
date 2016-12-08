@@ -1,5 +1,7 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '',
 	{ preload: preload, create: create, update: update});
+var score = 0;
+var scoreText;
 
 function preload() {
 	game.load.image('sky','assets/sky.png');
@@ -32,6 +34,8 @@ function create() {
 
 	stars = game.add.group();
 	stars.enableBody = true;
+
+	scoreText = game.add.text(16,16, "ur socr: 0", {fontSize: '32px', fill:'#FFFF00'});
 
 	for (var i=0; i<12; i++){
 		var star = stars.create(i*70, 0,'star');
@@ -69,9 +73,6 @@ function update() {
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(enemy, platforms);
 	game.physics.arcade.collide(stars, platforms);
-	game.physics.arcade.collide(stars, player);
-	game.physics.arcade.collide(stars, stars);
-	game.physics.arcade.collide(enemy, player);
 
 	game.physics.arcade.overlap(player, stars, collectStar, null, this);
 	player.body.velocity.x = 0;
@@ -96,6 +97,11 @@ function update() {
 		enemy.animations.play('right');
 	}
 	function collectStar(player,star){
-
+		star.kill();
+		star = stars.create(Math.floor(Math.random()*750),0,'star');
+		star.body.gravity.y=200;
+		star.body.bounce.y = 0.7 + Math.random() *0.3;
+		score+=1;
+		scoreText.text="ur socr: "+score;
 	}
 }
